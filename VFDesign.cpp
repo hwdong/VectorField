@@ -150,8 +150,6 @@ int lic_streamline(const unsigned char* noise, const float *vx, const  float *vy
 	double x, y;
 	int ix ,iy;
 	int noise_color = 0;
-	if (x0 == 0 && y0 == 247)
-		int sss = 0;
 
 	float vx0, vy0;
 	int num = 0,idx=0;
