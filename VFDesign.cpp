@@ -365,7 +365,7 @@ static inline void display(void)
 
 
 
-int main_VFDesign(int argc, char** argv)
+int main(int argc, char** argv)
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
