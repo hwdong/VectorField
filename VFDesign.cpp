@@ -60,8 +60,7 @@ class VFDesign_SingularElement:VFDesign_Element
 	}
 	virtual glm::vec2  operator()(glm::vec2  p) {
 		glm::vec2  p0p = p - this->p;		
-		if (p[0] == 0 && p[1] == 0 || p[0] == 240 && p[1] == 240)
-			int  sss = 0;
+
 //		float x = -d*length2(p0p), y = exp(x);
 		glm::vec2  V = k*exp (-d*length2(p0p))*p0p;
 		if (type == 1)   //Sink
@@ -120,7 +119,8 @@ void gen_vector_field_ByElements(float *vx, float *vy, int width, int height, st
 
 void test_gen_vector_field_ByElements(float *vx, float *vy, int width, int height) {
 	std::vector<VFDesign_Element*> eles;
-        glm::vec2 p0(width /4, height / 2);
+
+	glm::vec2 p0(width /4, height / 2);
 
 	float d = 10./(width*height), k = 1;  
 //	float d = 0.0001 , k = 1.;
@@ -147,7 +147,32 @@ void test_gen_vector_field_ByElements(float *vx, float *vy, int width, int heigh
 	VFDesign_ResularElement *regular = new VFDesign_ResularElement(p0, d, v0);
 	eles.push_back((VFDesign_Element*)regular);
 #endif
-	gen_vector_field_ByElements(vx, vy, width, height, eles,true);	
+	gen_vector_field_ByElements(vx, vy, width, height, eles);	
+}
+
+void copyVF(const float *vx, const float *vy,  float *&dst_vx,  float *&dst_vy, int width, int height)
+{
+	if (dst_vx) delete[] dst_vx; if (dst_vy) delete[] dst_vy;
+	int size = width*height;
+	dst_vx = new float[size]; dst_vy = new float[size];
+	for (int i = 0; i < size; i++){
+		dst_vx[i] = vx[i];
+		dst_vy[i] = vy[i];
+	}
+	  
+}
+void normalizeVF(float *vx, float *vy, int width, int height)
+{
+	for (int y = 0; y < height; y++)
+	{
+		for (int x = 0; x < width; x++)
+		{
+			int idx = y * width + x;
+			glm::vec2 V(vx[idx],vy[idx]);
+			V = glm::normalize(V);
+			vx[idx] = V[0];  vy[idx] = V[1];
+		}
+	}
 }
 
 
@@ -419,7 +444,14 @@ void init_vector_field() {
 	float *vy = new float[size];
 	gen_noise_img(noise_img, img_width, img_height);
 	test_gen_vector_field_ByElements(vx, vy, img_width, img_height); //generate vector field from a sparse set of feature elements
-	gen_lic(lic_img, noise_img, vx, vy, img_width, img_height);
+
+	//gen_lic(lic_img, noise_img, vx, vy, img_width, img_height);
+	float *des_vx=0, *dst_vy=0;
+	copyVF(vx, vy, des_vx, dst_vy, img_width, img_height);
+	normalizeVF(des_vx, dst_vy, img_width, img_height);
+	gen_lic(lic_img, noise_img, des_vx, dst_vy, img_width, img_height);
+
+
 	gray2rgb(glTex_img, lic_img, img_width, img_height);
 //	test_draw_streamline_rgb(glTex_img, vx, vy, img_width, img_height);//draw streamlines on the vector field
 	test_draw_arrow_rgb(glTex_img, vx, vy, img_width, img_height); //draw arrows on the vector field
@@ -511,4 +543,6 @@ int main_VFDesign(int argc, char** argv)
 	glutMainLoop();
 	return 0;
 }
+
+
 
