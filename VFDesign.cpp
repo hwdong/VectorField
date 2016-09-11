@@ -120,8 +120,7 @@ void gen_vector_field_ByElements(float *vx, float *vy, int width, int height, st
 
 void test_gen_vector_field_ByElements(float *vx, float *vy, int width, int height) {
 	std::vector<VFDesign_Element*> eles;
-
-	glm::vec2 p0(width /4, height / 2);
+        glm::vec2 p0(width /4, height / 2);
 
 	float d = 10./(width*height), k = 1;  
 //	float d = 0.0001 , k = 1.;
@@ -134,6 +133,12 @@ void test_gen_vector_field_ByElements(float *vx, float *vy, int width, int heigh
 #if 1	
 	type = 1;
 	p0[0] = 3 * width / 4; p0[1] = 1 * height / 2; //k = 0.5;
+	singular = new VFDesign_SingularElement(p0, d, k, type);
+	eles.push_back((VFDesign_Element*)singular);
+#endif	
+#if 1	
+	type = 3;
+	p0[0] = 1 * width / 2; p0[1] = 3 * height / 4; //k = 0.5;
 	singular = new VFDesign_SingularElement(p0, d, k, type);
 	eles.push_back((VFDesign_Element*)singular);
 #endif	
