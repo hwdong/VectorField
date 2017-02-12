@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="VFDA">
+      <UniqueIdentifier>{3aa2ce58-0f02-4bea-8c47-fd36ac96fecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{fc57da1d-33d0-411e-9f4c-e7c41a150d8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mesh">
+      <UniqueIdentifier>{4cbea741-3fa6-4792-98ba-2f7d20cc5e0d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main_glut.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracing.cpp">
+      <Filter>VFDA</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Texture2dGLWindow.h">
+      <Filter>VFDA</Filter>
+    </ClInclude>
+    <ClInclude Include="Tracing.h">
+      <Filter>VFDA</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorField.h">
+      <Filter>VFDA</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorFieldDesignData.h">
+      <Filter>VFDA</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex2Pixel.h">
+      <Filter>VFDA</Filter>
+    </ClInclude>
+    <ClInclude Include="Analysis.h">
+      <Filter>VFDA</Filter>
+    </ClInclude>
+    <ClInclude Include="Analysis2D.h">
+      <Filter>VFDA</Filter>
+    </ClInclude>
+    <ClInclude Include="Design.h">
+      <Filter>VFDA</Filter>
+    </ClInclude>
+    <ClInclude Include="IsInClosedRegion.h">
+      <Filter>VFDA</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="gl_util.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex2Pixel_Qt.h">
+      <Filter>VFDA</Filter>
+    </ClInclude>
+    <ClInclude Include="Smooth.h">
+      <Filter>VFDA</Filter>
+    </ClInclude>
+    <ClInclude Include="sample_curve.h">
+      <Filter>VFDA</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="Smooth.obj">
+      <Filter>VFDA</Filter>
+    </Object>
+  </ItemGroup>
+</Project>
